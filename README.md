@@ -4,7 +4,7 @@ Sailfish is a small code and math language model trained from scratch, designed 
 
 It is a research release. It is fast, but its accuracy is modest and it is not a general assistant.
 
-中文说明见 [README.zh.md](README.zh.md).
+中文说明见 [README.zh.md](README.zh.md)，技术说明见 [TECHNICAL_NOTES.zh.md](TECHNICAL_NOTES.zh.md).
 
 ## Models
 
@@ -70,12 +70,14 @@ Fine-tuning also uses checked problems generated through the DeepSeek API (`scri
 
 Python and PyTorch are required, along with `tokenizers`, `numpy`, `pyarrow` and `evalplus` for evaluation.
 
+Download the weights from the [release page](https://github.com/Dennisyu-m/sailfish-public/releases/tag/v1.0). Save `sailfish-v3.pt` as `weights/v3/model.pt` and `sailfish-v1.pt` as `weights/v1/model.pt`.
+
 ```bash
 python scripts/chat.py
 python scripts/chat.py --ckpt weights/v1/model.pt
 ```
 
-The chat script runs on CPU at about 12 tokens/s for v3. It handles one question at a time, with no multi-turn memory. English coding and math prompts work best.
+The chat script uses a GPU when one is available, at about 50 tokens/s for v3, and about 12 tokens/s on CPU. It generates token by token without the draft head, so it is much slower than the throughput above. It handles one question at a time, with no multi-turn memory. English coding and math prompts work best.
 
 ## Reproducing
 
@@ -113,8 +115,8 @@ These licenses are as listed on each dataset's Hugging Face page. Each dataset r
 
 | File | Size | SHA-256 |
 |---|---|---|
-| `weights/v3/model.pt` | 1.38 GB | `1f71714792853e2a1d2c6f7b143cf25f02b615dd23e9ca0ba29504b45071ea40` |
-| `weights/v1/model.pt` | 0.50 GB | `a42b52435611d5a9288dbdd0d624e62c55fad56a5965a4ec9e27e336f1cd04cf` |
+| `sailfish-v3.pt` | 1.38 GB | `1f71714792853e2a1d2c6f7b143cf25f02b615dd23e9ca0ba29504b45071ea40` |
+| `sailfish-v1.pt` | 0.50 GB | `a42b52435611d5a9288dbdd0d624e62c55fad56a5965a4ec9e27e336f1cd04cf` |
 
 ## License
 

@@ -1,6 +1,6 @@
 # Sailfish
 
-Sailfish 是一个从零训练的代码和数学小模型，目标是低延迟生成。它的结构是以卷积层为主的主干，加一个用于投机解码的草稿头。
+Sailfish 是一个从零训练的代码和数学小模型，目标是低延迟生成。它的结构是以卷积层为主的主干，加一个用于投机解码的草稿头。技术细节见 [TECHNICAL_NOTES.zh.md](TECHNICAL_NOTES.zh.md)。
 
 这是研究性质的发布。它速度快，但准确率一般，也不是通用助手。
 
@@ -68,12 +68,14 @@ C 是卷积层，A 是注意力层。
 
 需要 Python、PyTorch 和 `tokenizers`；跑评测还需要 `numpy`、`pyarrow` 和 `evalplus`。
 
+权重从 [Release 页面](https://github.com/Dennisyu-m/sailfish-public/releases/tag/v1.0) 下载，把 `sailfish-v3.pt` 保存为 `weights/v3/model.pt`，把 `sailfish-v1.pt` 保存为 `weights/v1/model.pt`。
+
 ```bash
 python scripts/chat.py
 python scripts/chat.py --ckpt weights/v1/model.pt
 ```
 
-聊天脚本在 CPU 上运行，v3 约 12 token/秒，只能一问一答，不记得上一句。英文的编程和数学题效果最好。
+聊天脚本有显卡时用显卡，v3 约 50 token/秒，CPU 上约 12 token/秒。它逐词生成，没有使用草稿头，所以比上面的测速慢很多。它只能一问一答，不记得上一句。英文的编程和数学题效果最好。
 
 ## 复现
 
@@ -111,8 +113,8 @@ python scripts/chat.py --ckpt weights/v1/model.pt
 
 | 文件 | 大小 | SHA-256 |
 |---|---|---|
-| `weights/v3/model.pt` | 1.38 GB | `1f71714792853e2a1d2c6f7b143cf25f02b615dd23e9ca0ba29504b45071ea40` |
-| `weights/v1/model.pt` | 0.50 GB | `a42b52435611d5a9288dbdd0d624e62c55fad56a5965a4ec9e27e336f1cd04cf` |
+| `sailfish-v3.pt` | 1.38 GB | `1f71714792853e2a1d2c6f7b143cf25f02b615dd23e9ca0ba29504b45071ea40` |
+| `sailfish-v1.pt` | 0.50 GB | `a42b52435611d5a9288dbdd0d624e62c55fad56a5965a4ec9e27e336f1cd04cf` |
 
 ## 许可证
 
