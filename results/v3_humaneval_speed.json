@@ -1,0 +1,21 @@
+{
+ "tau_measured": 3.0335438042620364,
+ "n": 164,
+ "greedy_consistency": "147/164",
+ "CUDA Graph": {
+  "TPS": 736.6953744998499,
+  "chars_per_s": 2385.371129348415,
+  "ms_per_problem": 63.62460365837649,
+  "ms_per_cycle": 4.117772296753649,
+  "tokens": 7687,
+  "chars": 24890
+ },
+ "torch.compile + CUDA Graph": {
+  "TPS": 1065.4471377957414,
+  "chars_per_s": 3450.3635875687223,
+  "ms_per_problem": 43.85539938918622,
+  "ms_per_cycle": 2.8149845400495264,
+  "tokens": 7663,
+  "chars": 24816
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "tau_measured": 2.477526395173454,
+ "n": 164,
+ "CUDA Graph": {
+  "TPS": 976.3099153305261,
+  "chars_per_s": 3356.206393447948,
+  "ms_per_problem": 51.33191097579917,
+  "ms_per_cycle": 2.5387314234110563,
+  "tokens": 8219,
+  "chars": 28254
+ },
+ "torch.compile + CUDA Graph": {
+  "TPS": 1617.144464938451,
+  "chars_per_s": 5425.995762284581,
+  "ms_per_problem": 31.76330548828956,
+  "ms_per_cycle": 1.5582357463594043,
+  "tokens": 8424,
+  "chars": 28265
+ }
+}

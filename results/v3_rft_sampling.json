@@ -1,0 +1,15 @@
+{
+ "math": {
+  "samples": 95920,
+  "correct": 16311,
+  "acc": 0.17004795663052544,
+  "problems_solved": 4887
+ },
+ "code": {
+  "samples": 64000,
+  "correct": 27851,
+  "acc": 0.435171875,
+  "problems_solved": 4909
+ },
+ "kept_unique": 25256
+}
